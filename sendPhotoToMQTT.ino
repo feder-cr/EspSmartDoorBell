@@ -6,13 +6,11 @@
 #include <esp_now.h>
 #include <esp_wifi.h>
 
-int counter = 0;
 #define PWDN_GPIO_NUM     -1
 #define RESET_GPIO_NUM    -1
 #define XCLK_GPIO_NUM     10
 #define SIOD_GPIO_NUM     40
 #define SIOC_GPIO_NUM     39
-
 #define Y9_GPIO_NUM       48
 #define Y8_GPIO_NUM       11
 #define Y7_GPIO_NUM       12
@@ -24,29 +22,17 @@ int counter = 0;
 #define VSYNC_GPIO_NUM    38
 #define HREF_GPIO_NUM     47
 #define PCLK_GPIO_NUM     13
-
 #define LED_GPIO_NUM      21
 
 #define ESP32CAM_PUBLISH_TOPIC   "esp32/pub"
-
 const int bufferSize = 1024 * 23; // 23552 bytes
-//const byte WIFI_BSSID[] = {0x20, 0x66, 0xCF, 0xEA, 0x75, 0x88};
-
+//const byte WIFI_BSSID[] = {};
 WiFiClientSecure net = WiFiClientSecure();
 MQTTClient client = MQTTClient(bufferSize);
 bool receive = false; 
 
-
-int x = 0;
-
-
-
-
-
-
 void connectWIFI()
 {
-
   //WiFi.begin(WIFI_SSID, WIFI_PASSWORD, 0, WIFI_BSSID);
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
   while (WiFi.status() != WL_CONNECTED){
@@ -60,21 +46,13 @@ void connectAWS()
   net.setCACert(AWS_CERT_CA);
   net.setCertificate(AWS_CERT_CRT);
   net.setPrivateKey(AWS_CERT_PRIVATE);
-
   client.begin(AWS_IOT_ENDPOINT, 8883, net);
   client.setCleanSession(true);
-
   while (!client.connect(THINGNAME)) {delay(100);}
-
   if(!client.connected()){
-    vTaskDelay(10);
     ESP.restart();
     return;
   }
-  vTaskDelay(10);
-  vTaskDelay(10);
-  vTaskDelay(10);
-
 }
 
 void cameraInit(){
@@ -99,17 +77,14 @@ void cameraInit(){
   config.pin_reset = RESET_GPIO_NUM;
   config.xclk_freq_hz = 24000000;
   config.frame_size = FRAMESIZE_VGA;
-  config.pixel_format = PIXFORMAT_JPEG; // for streaming
-  //config.pixel_format = PIXFORMAT_RGB565; // for face detection/recognition
+  config.pixel_format = PIXFORMAT_JPEG;
   config.grab_mode = CAMERA_GRAB_WHEN_EMPTY;
   config.fb_location = CAMERA_FB_IN_PSRAM;
   config.jpeg_quality = 12;
   config.fb_count = 1;
-
-  // camera init
+  
   esp_err_t err = esp_camera_init(&config);
   if (err != ESP_OK) {
-    //vTaskDelay(100);
     ESP.restart();
     return;
   }
@@ -132,9 +107,7 @@ void setup()
   WiFi.mode(WIFI_STA);
   esp_sleep_enable_timer_wakeup(2 * 1000000);
   if (esp_now_init() != ESP_OK) {
-    vTaskDelay(100);
-
-    return;
+    ESP.restart();;
   }
   esp_now_register_recv_cb(OnDataRecv);
 }
@@ -144,7 +117,6 @@ void loop()
   delay(100);
     if(receive == true)
     {
-      //setCpuFrequencyMhz(240);
       connectWIFI();
       sendFCMRequest();
       cameraInit();
@@ -182,7 +154,6 @@ void sendFCMRequest()
   client.println();
   client.println(requestData);
 }
-
 
 void OnDataRecv(const uint8_t * mac, const uint8_t *incomingData, int len) 
 {
