@@ -107,7 +107,7 @@ void setup()
   WiFi.mode(WIFI_STA);
   esp_sleep_enable_timer_wakeup(2 * 1000000);
   if (esp_now_init() != ESP_OK) {
-    ESP.restart();;
+    ESP.restart();
   }
   esp_now_register_recv_cb(OnDataRecv);
 }
@@ -147,7 +147,7 @@ void sendFCMRequest()
   String requestData = "{\"to\": \"/topics/nome_topic\", \"data\": {\"default\": \"0\"}}";
   client.println("POST /fcm/send HTTP/1.1");
   client.println("Host: " + String(server));
-  client.println("Authorization: key=AAAAhYD-nLY:APA91bGGvvcUbFcaR_djh5XLUg6uiqVokb48y_OsLSzI504iMIrfTBjYo1cbYfgKgGAUiqzC-e_RFnt-EwULbbgETqGGbzf1RVXEX8o5e8K8D8YX1BnncEhU2hwUgUrUYgIRXXbS779S");
+  client.println("Authorization: key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
   client.println("Content-Type: application/json");
   client.print("Content-Length: ");
   client.println(requestData.length());
