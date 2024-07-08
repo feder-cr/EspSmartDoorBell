@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "573394820278",
+    "project_id": "fir-ef438",
+    "storage_bucket": "fir-ef438.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:573394820278:android:51ba8a645f20cf62a09a17",
+        "android_client_info": {
+          "package_name": "com.example.firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "573394820278-82snu3q1n9rckop0h02v20hclsje1s56.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLa2uNpUvE_tgAYgzmrS2rUsA5jv8wPZI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "573394820278-82snu3q1n9rckop0h02v20hclsje1s56.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:573394820278:android:f42b41ef3897dd15a09a17",
+        "android_client_info": {
+          "package_name": "com.maiot.esempiomqtt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "573394820278-82snu3q1n9rckop0h02v20hclsje1s56.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLa2uNpUvE_tgAYgzmrS2rUsA5jv8wPZI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "573394820278-82snu3q1n9rckop0h02v20hclsje1s56.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

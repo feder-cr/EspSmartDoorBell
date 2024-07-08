@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp">
+
+        <!-- Logo centrato -->
+        <ImageView
+            android:id="@+id/logoImageView"
+            android:src="@drawable/logo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            />
+
+        <!-- Testo "DOORBELL" centrato -->
+    <TextView
+        android:id="@+id/doorbellTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logoImageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/black"
+        android:text="History"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        android:typeface="normal" />
+
+        <!-- Spazio -->
+        <Space
+            android:id="@+id/space"
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:layout_below="@id/doorbellTextView" />
+
+        <!-- Scroll View -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/footer"
+        android:layout_below="@id/space">
+
+        <!-- Contenitore -->
+        <LinearLayout
+            android:id="@+id/historyLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+    </ScrollView>
+    <!-- Spazio -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="16dp" />
+
+    <!-- Footer con tre bottoni centrati -->
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/viola_melanzana_dark"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/homeImageButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@android:color/transparent"
+                android:padding="0dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/home"
+                app:tint="@color/white"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Home"
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                android:typeface="normal" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/deleteAllImageButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@android:color/transparent"
+                android:padding="0dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/auto_delete"
+                app:tint="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="DeleteAll"
+                android:layout_below="@id/deleteAllImageButton"
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                android:typeface="normal"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/historyImageButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@android:color/transparent"
+                android:padding="0dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/history"
+                app:tint="@color/white"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="History"
+                android:textColor="@android:color/white"
+                android:layout_below="@id/historyImageButton"
+                android:textSize="12sp"
+                android:typeface="normal" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+    </RelativeLayout>
+
+
